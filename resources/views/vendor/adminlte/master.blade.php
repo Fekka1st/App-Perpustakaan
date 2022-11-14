@@ -127,6 +127,8 @@
                 break;
         }
     </script>
+    @endif
+
 </body>
 
 </html>
