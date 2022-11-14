@@ -14,6 +14,11 @@ class AdminController extends Controller
     {
         $this->middleware('auth');
     }
+    public function books(){
+        $user = Auth::user();
+        $books = Book::all();
+        return view('book',compact('user','books'));
+    }
     public function index()
     {
         $user = Auth::user();

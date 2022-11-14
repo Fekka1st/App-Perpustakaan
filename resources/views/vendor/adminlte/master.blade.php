@@ -107,11 +107,12 @@
     {{-- Custom Scripts --}}
     @yield('adminlte_js')
 
+    {{-- 6.2.1 --}}
     {{--Custom Scripts --}}
     @yield('adminlte_js')
     <script>
         const Toast = Swal.mixin({
-            toast:ture,
+            toast:true,
             position: 'top-end',
             showConfirmButton: 'false',
             timer:3000,
@@ -125,10 +126,59 @@
                     title: "{{Session::get('message')}}"
                 })
                 break;
+                case 'success':
+                    Toast.fire({
+                        type: 'success',
+                        title: "{{Session::get('message')}}"
+                    })
+                    break;
+                    case 'warning':
+                        Toast.fire({
+                            type: "warning"
+                            title: "{{Session:get('message')}}"
+                        })
+                        break;
+                        case 'error':
+                        Toast.fire({
+                            type: "error"
+                            title: "{{Session:get('message')}}"
+                        })
+                        break;
+                        case 'dialog_error':
+                        Swal.fire({
+                            type: 'error'
+                            title: "Ooops"
+                            text: "{{Session::get('message')}}",
+                            Timer:3000
+                        })
+                        break;
         }
-    </script>
-    @endif
+        @endif
+        @if ($errors->any())
+        @foreach(@errors->all()as $error)
+        Swal.fire({
+            type: 'error'
+            title:"Ooops"
+            text:"{{$error}}",
+        })
+        @endforeach
+        @endif
 
+     // 6.2.2
+
+     @if ($erros->any())
+     Swal.fire({
+        icon:'error',
+        title:"Ooops",
+        text:"Terjadi sesuatu kesalahan"
+     })
+     @endif
+     $('#table-data').DataTable();
+
+     let baseurl = "<?=url('/')?>";
+     let fullurl = "<?=url()->full()?>";
+     
+    </script>
 </body>
 
 </html>
