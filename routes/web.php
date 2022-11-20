@@ -44,10 +44,18 @@ Route::get('/home', function () {
 
 Auth::routes();
 
-Route::get('/home', function() {
+Route::get('/home', function () {
     return view('home');
 })->name('home')->middleware('auth');
 
-Route::get('admin/books',[App\Http\Controllers\AdminController::class,'books'])
-->name('admin.books')
-->middleware('is_admin');
+Route::get('admin/books', [App\Http\Controllers\AdminController::class, 'books'])
+    ->name('admin.books')
+    ->middleware('is_admin');
+
+Route::post('amin/books', [App\Http\Controllers\AdminController::class, 'submit_book'])
+    ->name('admin.book.submit')
+    ->middleware('is_admin');
+
+Route::patch('admin/books/update', [App\Http\Controllers\AdminController::class, 'update_book'])
+    ->name('admin.book.update')
+    ->middleware('is_admin');
