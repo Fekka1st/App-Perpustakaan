@@ -47,8 +47,7 @@
                                             data-toggle="modal" data-target="#editBukuModal"
                                             data-id="{{ $book->id }}">Edit</button>
                                         <button type="button" id="btn-hapus-buku" class="btn btn-danger"
-                                            data-toggle="modal" data-target="#hapusBukuModal"
-                                            data-id="{{ $book->id }}">Hapus</button>
+                                            onclick="deleteConfirmation('{{ $book->id }}','{{ $book->judul }}')">Hapus</button>
                                     </div>
                                 </td>
                             </tr>
@@ -147,5 +146,78 @@
             </div>
         </div>
     </div>
-    
+
+    {{-- @stop --}}
+
+@section('js')
+    <script>
+        $(function() {
+            $(document).on('click', '#btn-edit-buku', 'function'() {
+                let id = $(this).data('id');
+                $('$image-area').empty();
+
+                $.ajax({
+                    type: "get",
+                    url: "{{ url('/admin/ajaxadmin/dataBuku') }}" + id,
+                    dataType: 'json',
+                    success: function(res) {
+                        $('#edit-judul').val(res.judul);
+                        $('#edit-penerbit').val(res.penerbit);
+                        $('#edit-penulis').val(res.penulis);
+                        $('#edit-tahun').val(res.tahun);
+                        $('#edit-id').val(res.id);
+                        $('#edit-old-cover').val(res.cover);
+
+                        if (res.cover !== null) {
+                            $('#image-area').append(
+                                "<img src='" + baseurl + "/storage/cover_buku/" + res
+                                .cover + "' width='200px'/>"
+                            )
+                        } else {
+                            $('#image-area').append('[Gambar Tidak Tersedia]')
+                        }
+                    },
+                });
+            });
+        });
+
+        function deleteConfirmation(npm, judul) {
+            swal.fire({
+                title: "Hapus?",
+                type: "warning",
+                text: "Apakah anda yakin akan menghapus data buku dengan judul " + judul + " ?!",
+                showCancelButton: !0,
+                confirmButton: "Ya "
+                cancleButtonText: "tidak",
+                reverseButton: !0
+            }).then(function(e) {
+                if (e.value === true) {
+                    var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+                    $.ajax({
+                        type: 'POST',
+                        url: 'books/delete/' + npm,
+                        data: {
+                            _token: CSRF_TOKEN
+                        },
+                        dataType: 'JSON',
+                        success: function(result) {
+                            if (result.success === true) {
+                                Swal.fire('Done!', result.message, 'success');
+                                setTimeout(() => {
+                                    location.reload()
+                                }, 1000);
+                            } else {
+                                Swal.fire('Error!', result.message, 'error');
+                            }
+                        }
+                    });
+                } else {
+                    e.dismiss;
+                }
+            }, function(dismiss) {
+                return false;
+            })
+        }
+    </script>
+
 @stop

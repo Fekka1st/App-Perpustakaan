@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Controller;
 use App\Models\Role;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -48,6 +49,8 @@ Route::get('/home', function () {
     return view('home');
 })->name('home')->middleware('auth');
 
+//pengelolaan buku
+
 Route::get('admin/books', [App\Http\Controllers\AdminController::class, 'books'])
     ->name('admin.books')
     ->middleware('is_admin');
@@ -58,4 +61,10 @@ Route::post('admin/books', [App\Http\Controllers\AdminController::class, 'submit
 
 Route::patch('admin/books/update', [App\Http\Controllers\AdminController::class, 'update_book'])
     ->name('admin.book.update')
+    ->middleware('is_admin');
+
+Route::get('admin/ajaxadmin/dataBuku/{id}', [App\Http\Controllers\AdminController::class, 'getDataBuku']);
+
+Route::post('admin/books/delete/{id}', [App\Http\Controllers\AdminController::class, 'delete_book'])
+    ->name('admin.book.delete')
     ->middleware('is_admin');
