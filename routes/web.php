@@ -36,7 +36,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 //}
 // });
 
-Route::get('admin/home', [\App\Http\Controllers\AdminController::class, 'index'])->name('admin.home')->middleware('is_admin');
+Route::get('admin/home', [\App\Http\Controllers\AdminController::class, 'books'])->name('admin.home')->middleware('is_admin');
 Auth::routes();
 
 Route::get('/home', function () {
@@ -67,4 +67,8 @@ Route::get('admin/ajaxadmin/dataBuku/{id}', [App\Http\Controllers\AdminControlle
 
 Route::post('admin/books/delete/{id}', [App\Http\Controllers\AdminController::class, 'delete_book'])
     ->name('admin.book.delete')
+    ->middleware('is_admin');
+
+Route::get('admin/print_books', [\App\Http\Controllers\AdminController::class, 'print_books'])
+    ->name('admin.print.books')
     ->middleware('is_admin');

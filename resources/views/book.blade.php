@@ -4,6 +4,7 @@
     <h1>Data Buku</h1>
 @stop
 @section('content')
+
     <div class="container-fluid">
         <div class="card card-default">
             <div class="card-header">{{ __('Pengelolaan Buku') }}</div>
@@ -12,6 +13,8 @@
                     <i class="fa fa-plus"></i>
                     Tambah Data
                 </button>
+                <a href="{{ route('admin.print.books') }}" target="_blank" class="btn btn-primary"><i
+                        class="fa fa-print"></i>Cetak PDF</a>
                 <hr />
                 <table id="table-data" class="table table-bordered">
                     <thead>
@@ -112,7 +115,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="{{ route('admin.book.submit') }}" method="POST" enctype="multipart/form-data">
+                    <form method="post" action="{{ route('admin.book.update') }}" enctype="multipart/form-data">
                         @csrf
                         @method('PATCH')
                         <div class="form-group">
@@ -131,9 +134,15 @@
                             <label for="edit-penerbit">Penerbit</label>
                             <input type="text" class="form-control" name="penerbit" id="edit-penerbit" required>
                         </div>
-                        <div class="form-group">
-                            <label for="edit-cover">Cover</label>
-                            <input type="file" class="form-control" name="cover" id="edit-cover" required>
+                        <div class="col-md-6">
+                            <div class="form-group" id="image-area">
+                                <div class="form-group">
+                                    <label for="edit-cover">Cover</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <input type="file" class="form-control" name="cover" id="edit-cover" required>
+                            </div>
                         </div>
                 </div>
                 <div class="modal-footer">
@@ -147,18 +156,18 @@
         </div>
     </div>
 
-    {{-- @stop --}}
+@stop
 
 @section('js')
     <script>
         $(function() {
-            $(document).on('click', '#btn-edit-buku', 'function'() {
+            $(document).on('click', '#btn-edit-buku', function() {
                 let id = $(this).data('id');
-                $('$image-area').empty();
+                $('#image-area').empty();
 
                 $.ajax({
                     type: "get",
-                    url: "{{ url('/admin/ajaxadmin/dataBuku') }}" + id,
+                    url: "{{ url('/admin/ajaxadmin/dataBuku') }}/" + id,
                     dataType: 'json',
                     success: function(res) {
                         $('#edit-judul').val(res.judul);
@@ -186,10 +195,9 @@
                 title: "Hapus?",
                 type: "warning",
                 text: "Apakah anda yakin akan menghapus data buku dengan judul " + judul + " ?!",
+                cancleButtonText: "tidak",
                 showCancelButton: !0,
                 confirmButton: "Ya "
-                cancleButtonText: "tidak",
-                reverseButton: !0
             }).then(function(e) {
                 if (e.value === true) {
                     var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');

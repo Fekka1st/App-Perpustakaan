@@ -2,6 +2,11 @@
 
 namespace App\Http\Controllers;
 
+// use Barryvdh\DomPDF\Facade\Pdf as PDF;
+// use Barryvdh\DomPDF\Facade\PDF
+// use PDF;
+
+use Barryvdh\DomPDF\Facade\Pdf as PDF;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use illuminate\Validation\ValidationException;
@@ -108,5 +113,15 @@ class AdminController extends Controller
                 'message' => $message,
             ]
         );
+    }
+
+    public function print_books()
+    {
+        $books = Book::all();
+        $pdf = PDF::loadview('print_books', ['books' => $books]);
+        // dd($pdf);
+
+        // // $pdf = Pdf::loadViewloadview('print_books', ['books' => $books]);
+        return $pdf->download();
     }
 }
