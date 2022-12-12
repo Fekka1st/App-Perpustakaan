@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Storage;
 use illuminate\Validation\ValidationException;
 use Illuminate\Http\Request;
 use App\Models\Book;
+use App\Models\User;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\BooksImport;
 use App\Exports\BooksExport;
@@ -35,8 +36,10 @@ class AdminController extends Controller
     public function home()
     {
         $user = Auth::user();
+        // $users = User::all();
         $books = Book::all();
-        return view('home', compact('user', 'books'));
+        $user = User::where('roles_id', '2')->count();
+        return view('home', compact('user', 'books', 'user'));
     }
 
     public function submit_book(Request $request)

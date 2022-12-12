@@ -63,9 +63,9 @@ return [
     |
     */
 
-    'logo' => '<br><b>PERPUSTAKAAN</b><br>Pengelolaan',
-    'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
-    'logo_img_class' => 'brand-image img-circle elevation-3',
+    'logo' => '<br><b>Pengelolaan</b> Perpustakaan',
+    'logo_img' => 'vendor/adminlte/dist/img/logo1.jpg',
+    'logo_img_class' => 'brand-image img-circle elevation-1',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
     'logo_img_alt' => 'Admin Logo',
@@ -109,7 +109,7 @@ return [
     'preloader' => [
         'enabled' => true,
         'img' => [
-            'path' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
+            'path' => 'vendor/adminlte/dist/img/logo1.jpg',
             'alt' => 'AdminLTE Preloader Image',
             'effect' => 'animation__shake',
             'width' => 60,
@@ -327,23 +327,25 @@ return [
             'label_color' => 'success',
         ],
         [
-            'text' => 'buku',
+            'text' => 'Kelola Buku',
             'url' => 'admin/books',
             'icon' => 'fas fa-fw fa-book',
             'can' => 'isAdmin',
         ],
 
-        ['header' => 'account_settings'],
+        ['header' => 'Setting Akun'],
         [
-            'text' => 'profile',
-            'url'  => 'admin/settings',
+            'text' => 'Profil Akun',
+            'url'  => 'admin/profil',
             'icon' => 'fas fa-fw fa-user',
         ],
         [
-            'text' => 'change_password',
-            'url'  => 'admin/settings',
+            'text' => 'Ganti Password',
+            'url'  => 'admin/Change',
             'icon' => 'fas fa-fw fa-lock',
         ],
+        ['header' => 'Create By Ferry Aditya H'],
+        ['header' => 'Version 1.0'],
         // [
         //     'text'    => 'multilevel',
         //     'icon'    => 'fas fa-fw fa-share',
