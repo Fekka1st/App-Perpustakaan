@@ -15,7 +15,13 @@
                 </button>
                 <a href="{{ route('admin.print.books') }}" target="_blank" class="btn btn-primary"><i
                         class="fa fa-print"></i>Cetak PDF</a>
+                <div class="btn-group" role="group" aria-label="Basic example">
+                    <a href="{{ route('admin.book.export') }}" class="btn btn-info" target="_blank">Export</a>
+                    <button type="button" class="btn btn-warning" data-toggle="modal"
+                        data-target="#importDataModal">Import</button>
+                </div>
                 <hr />
+
                 <table id="table-data" class="table table-bordered">
                     <thead>
                         <tr class="text-center">
@@ -151,6 +157,34 @@
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
                     <button type="submit" class="btn btn-primary">Update</button>
                     </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{-- Modal Import Data --}}
+
+    <div class="modal fade" id="importDataModal" tabindex="-1" aria-labelby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Import Data</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <div class="modal-body">
+                        <form method="post" action="{{ route('admin.books.import') }}" enctype="multipart/form-data">
+                            @csrf
+                            <div class="form-group">
+                                <label for="cover">Upload file</label>
+                                <input type="file" class="form-control" name="file" />
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                                <button type="submit" class="btn btn-primary">Import Data</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>

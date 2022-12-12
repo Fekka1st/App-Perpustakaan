@@ -12,6 +12,9 @@ use Illuminate\Support\Facades\Storage;
 use illuminate\Validation\ValidationException;
 use Illuminate\Http\Request;
 use App\Models\Book;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Imports\BooksImport;
+use App\Exports\BooksExport;
 
 class AdminController extends Controller
 {
@@ -123,5 +126,27 @@ class AdminController extends Controller
 
         // // $pdf = Pdf::loadViewloadview('print_books', ['books' => $books]);
         return $pdf->download();
+    }
+    public function export()
+    {
+        return Excel::download(new BooksExport, 'books.xlsx');
+    }
+
+    public function import(Request $req)
+    {
+        # code...
+        Excel::import(new BooksImport, $req->file('file'));
+        // $validate = $req->validate([
+        //     'judul' => 'required|max:255',
+        //     'penulis' => 'required',
+        //     'tahun' => 'required',
+        //     'penerbit' => 'required'
+        // ]); buat nanti
+
+        $notification = array(
+            'message' => 'Import data Berhasil',
+            'alert-type' => 'success'
+        );
+        return redirect()->route('admin.books')->with($notification);
     }
 }

@@ -120,31 +120,31 @@
             switch (type) {
                 case 'info':
                     Toast.fire({
-                        type: 'info',
+                        icon: 'info',
                         title: "{{ Session::get('message') }}"
                     })
                     break;
                 case 'success':
                     Toast.fire({
-                        type: 'success',
+                        icon: 'success',
                         title: "{{ Session::get('message') }}"
                     })
                     break;
                 case 'warning':
                     Toast.fire({
-                        type: 'warning',
+                        icon: 'warning',
                         title: "{{ Session::get('message') }}"
                     })
                     break;
                 case 'error':
                     Toast.fire({
-                        type: 'error',
+                        icon: 'error',
                         title: "{{ Session::get('message') }}"
                     })
                     break;
                 case 'dialog_error':
                     Toast.fire({
-                        type: 'error',
+                        icon: 'error',
                         title: "Ooops",
                         text: "{{ Session::get('message') }}",
                         timer: 3000
@@ -155,7 +155,7 @@
         @if ($errors->any())
             @foreach ($errors->all() as $error)
                 Swal.fire({
-                    type: 'error',
+                    icon: 'error',
                     title: 'Ooops',
                     text: "{{ $error }}"
                 })
