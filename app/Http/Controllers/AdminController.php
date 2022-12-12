@@ -32,6 +32,13 @@ class AdminController extends Controller
         return view('book', compact('user', 'books'));
     }
 
+    public function home()
+    {
+        $user = Auth::user();
+        $books = Book::all();
+        return view('home', compact('user', 'books'));
+    }
+
     public function submit_book(Request $request)
     {
         $validate = $request->validate([

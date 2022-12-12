@@ -12,14 +12,14 @@ class AuthController extends Controller
     public function login(Request $req)
     {
         $user = User::where('email', $req->email)->first();
-        if (!$user || !Hash()::check($req->password, $user->password)) {
+        if (!$user || !Hash::check($req->password, $user->password)) {
             return response()->json([
                 'message' => 'Unauthorized'
             ], 401);
         }
 
         $token = $user->createToken('token-name')->plainTextToken;
-        
+
         return response()->json([
             'message' => 'success',
             'user' => $user,

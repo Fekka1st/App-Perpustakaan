@@ -36,7 +36,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 //}
 // });
 
-Route::get('admin/home', [\App\Http\Controllers\AdminController::class, 'books'])->name('admin.home')->middleware('is_admin');
+Route::get('admin/home', [App\Http\Controllers\AdminController::class, 'home'])->name('admin.home')->middleware('is_admin');
 Auth::routes();
 
 Route::get('/home', function () {

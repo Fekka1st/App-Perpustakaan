@@ -11,7 +11,17 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <p class="mb-0">You are logged in!</p>
+                    <h3 class="mb-0">Wellcome!</h3>
+                    <tbody>
+                        @php $no=1; @endphp
+                        @foreach ($books as $book)
+                            <tr>
+                                <td>jumlah buku</td>
+                                <td>{{ $no++ }}</td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+
                 </div>
             </div>
         </div>

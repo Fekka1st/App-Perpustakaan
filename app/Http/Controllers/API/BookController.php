@@ -4,9 +4,9 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Book;
 use Exception;
 use Illuminate\Support\Facades\Storage;
+use App\Models\Book;
 
 class BookController extends Controller
 {
@@ -45,6 +45,7 @@ class BookController extends Controller
             $validated['cover'] = $filename;
         }
         Book::create($validated);
+
         return response()->json([
             'message' => "Buku Berhasil Ditambahkan",
             'book' => $validated,
