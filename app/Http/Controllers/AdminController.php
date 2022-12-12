@@ -42,6 +42,19 @@ class AdminController extends Controller
         return view('home', compact('user', 'books', 'user'));
     }
 
+    public function change()
+    {
+        # code...
+        return view('change');
+    }
+    public function profile()
+    {
+        # code...
+        return view('profile');
+    }
+
+
+
     public function submit_book(Request $request)
     {
         $validate = $request->validate([

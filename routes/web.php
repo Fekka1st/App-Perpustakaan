@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('landingpage');
 });
 
 Auth::routes();
@@ -53,6 +53,14 @@ Route::get('/home', function () {
 
 Route::get('admin/books', [App\Http\Controllers\AdminController::class, 'books'])
     ->name('admin.books')
+    ->middleware('is_admin');
+
+Route::get('admin/profil', [App\Http\Controllers\AdminController::class, 'profile'])
+    ->name('admin.profile')
+    ->middleware('is_admin');
+
+Route::get('admin/Change', [App\Http\Controllers\AdminController::class, 'change'])
+    ->name('admin.change')
     ->middleware('is_admin');
 
 Route::post('admin/books', [App\Http\Controllers\AdminController::class, 'submit_book'])
