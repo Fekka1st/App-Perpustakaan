@@ -16,11 +16,8 @@
                         <div class="col-lg-3 col-6">
                             <div class="small-box bg-info">
                                 <div class="inner">
-                                    @php $no=1; @endphp
-                                    @foreach ($books as $book)
-                                        <h3>{{ $no++ }}</h3>
-                                        <p>Jumlah Buku</p>
-                                    @endforeach
+                                    <h3>{{ $books }}</h3>
+                                    <p>Jumlah Buku</p>
                                 </div>
                                 <div class="icon">
                                     <i class="fa fa-book"></i>

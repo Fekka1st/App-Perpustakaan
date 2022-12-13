@@ -35,7 +35,7 @@ class BookController extends Controller
             'penulis' => 'required',
             'tahun' => 'required',
             'penerbit' => 'required',
-            'cover' => 'image|file|max:2048'
+            'cover' => 'image|file'
         ]);
 
         if ($req->hasFile('cover')) {

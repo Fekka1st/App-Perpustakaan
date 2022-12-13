@@ -35,11 +35,9 @@ class AdminController extends Controller
 
     public function home()
     {
-        $user = Auth::user();
-        // $users = User::all();
-        $books = Book::all();
+        $books = Book::count();
         $user = User::where('roles_id', '2')->count();
-        return view('home', compact('user', 'books', 'user'));
+        return view('home', compact('books', 'user'));
     }
 
     public function change()
