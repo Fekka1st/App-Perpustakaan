@@ -16,6 +16,7 @@
                         <div class="col-lg-3 col-6">
                             <div class="small-box bg-info">
                                 <div class="inner">
+
                                     <h3>{{ $books }}</h3>
                                     <p>Jumlah Buku</p>
                                 </div>

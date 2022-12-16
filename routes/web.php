@@ -20,9 +20,9 @@ Route::get('/', function () {
     return view('landingpage');
 });
 
-Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'books'])->name('home');
 // Route::get('/test', [App\Http\Controllers\HomeController::class, 'test'])->name('home');
 
 // Route::get('/test', function () {
@@ -39,15 +39,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('admin/home', [App\Http\Controllers\AdminController::class, 'home'])->name('admin.home')->middleware('is_admin');
 Auth::routes();
 
-Route::get('/home', function () {
-    return view('home');
-})->name('home')->middleware('auth');
 
-Auth::routes();
 
-Route::get('/home', function () {
-    return view('home');
-})->name('home')->middleware('auth');
 
 //pengelolaan buku
 

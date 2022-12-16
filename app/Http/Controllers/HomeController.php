@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Book;
+use App\Models\User;
+
 
 class HomeController extends Controller
 {
@@ -29,9 +31,14 @@ class HomeController extends Controller
 
 
         # code...
-        $user = Auth::user();
-        $books = Book::all();
-
-        return view('book', compact('user', 'books'));
+        $books = Book::count();
+        $user = User::where('roles_id', '2')->count();
+        return view('home', compact('books', 'user'));
+    }
+    public function books()
+    {
+        $books = Book::count();
+        $user = User::where('roles_id', '2')->count();
+        return view('home', compact('books', 'user'));
     }
 }
