@@ -1,7 +1,6 @@
 <p align="center"><a href="#" target="_blank"><img src="https://staticg.sportskeeda.com/editor/2021/09/9eaad-16306015205656-800.jpg" width="400"></a></p>
-<p align="center">
-<h1>Aplikasi Perpustakaan</h1>
-</p>
+
+<h1 align="center">Aplikasi Perpustakaan</h1>
 
 _ini aplikasi dibuat untuk memenuhi tugas praktikum_
 _Berikut Gambar dari aplikasi yang saya buat_
@@ -60,7 +59,7 @@ _Berikut Gambar dari aplikasi yang saya buat_
 
 ## Requirements
 
--   PHP >= 8.0 (or higher)
+-   PHP >= 7.0 (or higher)
 -   Composer
 -   Node.js
 -   NPM
