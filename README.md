@@ -26,6 +26,8 @@ _Berikut Gambar dari aplikasi yang saya buat_
 <h3>Tampilan Login dan Register</h3>
 <p align="center"><a href="#" target="_blank"><img src="./img/login.png" width="1000"></a></p>
 
+<p align="center"><a href="#" target="_blank"><img src="./img/register.png" width="1000"></a></p>
+
 ## Roadmap
 
 -   [x] Dashboard
@@ -77,4 +79,13 @@ _Berikut Gambar dari aplikasi yang saya buat_
 8.  Login dengan user dibawah
     -   Email: `admin@mail.com`
     -   Password: `12345`
-9.  Enjoy!\_
+9.  Enjoy!
+
+## Contact
+
+-   [Instagram](https://twitter.com/zakarialabib)
+-   [GitHub](https://www.github.com/Fekka1st/)
+
+## Donate
+
+Jangan lupa berikan bintang jika kalian ingin saya lanjutkan project ini.
