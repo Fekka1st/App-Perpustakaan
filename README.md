@@ -64,9 +64,13 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT). -->
 
 <p align="center"><a href="#" target="_blank"><img src="https://staticg.sportskeeda.com/editor/2021/09/9eaad-16306015205656-800.jpg" width="400"></a></p>
-
-**Selamat Datang :)**
-
+<p align="center">
 ## Aplikasi Perpustakaan
+</p>
 
 _ini aplikasi dibuat untuk memenuhi tugas praktikum_
+_Berikut Gambar dari aplikasi yang saya buat_
+
+## ScreenShoot
+
+<p align="center"><a href="#" target="_blank"><img src="./img/home.png" width="1000"></a></p>
