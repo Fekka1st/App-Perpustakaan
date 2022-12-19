@@ -60,6 +60,7 @@ class AdminController extends Controller
             'penulis' => 'required',
             'tahun' => 'required',
             'penerbit' => 'required',
+            'cover' => 'required'
         ]);
         $book = new Book;
         $book->judul = $request->get('judul');
@@ -156,13 +157,12 @@ class AdminController extends Controller
     public function import(Request $req)
     {
         # code...
-        Excel::import(new BooksImport, $req->file('file'));
-        // $validate = $req->validate([
-        //     'judul' => 'required|max:255',
-        //     'penulis' => 'required',
-        //     'tahun' => 'required',
-        //     'penerbit' => 'required'
-        // ]); buat nanti
+
+        // $this->validate($req, [
+        //     'file' => 'required|in:doc,csv,xlsx,xls,docx,ppt,odt,ods,odp'
+        // ]);
+        // Excel::import(new BooksImport, $req->file('file'));
+
 
         $notification = array(
             'message' => 'Import data Berhasil',

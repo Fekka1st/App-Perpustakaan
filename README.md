@@ -2,7 +2,7 @@
 
 <h1 align="center">Aplikasi Perpustakaan</h1>
 
-_ini aplikasi dibuat untuk memenuhi tugas praktikum_
+_ini aplikasi dibuat untuk memenuhi tugas praktikum masih banyak kekurangan dalam aplikasi ini_
 _Berikut Gambar dari aplikasi yang saya buat_
 
 ## ScreenShoot
@@ -83,7 +83,7 @@ _Berikut Gambar dari aplikasi yang saya buat_
 
 ## Contact
 
--   [Instagram](https://twitter.com/zakarialabib)
+-   [Instagram](https://www.instagram.com/fekka_1st)
 -   [GitHub](https://www.github.com/Fekka1st/)
 
 ## Donate
